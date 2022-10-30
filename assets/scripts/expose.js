@@ -3,5 +3,38 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  // TODO
+  const changeImage = document.getElementById("horn-select");
+  const soundFile = document.querySelector(".hidden");
+  changeImage.addEventListener('change', function() {
+    const result = document.querySelector("img");
+    result.src = "assets/images/" + changeImage.value + ".png";
+    
+    soundFile.src = "assets/audio" + changeImage.value + ".mp3";
+});
+
+const changeVolume = document.getElementById("volume-controls");
+
+changeVolume.addEventListener('change', function() {
+  const result = document.querySelectorAll("img")[1];
+  if (changeVolume.value == 0)
+    result.src = "assets/icons/volume-level-0.png";
+  else if (changeVolume.value < 33)
+    result.src = "assets/icons/volume-level-1.png";
+  else if (changeVolume.value < 67)
+    result.src = "assets/icons/volume-level-2.png";
+  else
+    result.src = "assets/icons/volume-level-3.png";
+  soundFile.volume = changeVolume.value/100;
+});
+
+const button = document.querySelector("button");
+
+button.addEventListener('click', function() {
+  if (changeImage.value == "party-horn") {
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti();
+  }
+
+  soundFile.play();
+});
 }
