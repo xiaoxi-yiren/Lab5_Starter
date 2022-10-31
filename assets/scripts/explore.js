@@ -4,17 +4,17 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
 
-  const page = document.querySelector("html");
+  const page = document.querySelector("body");
   const listVoice = SpeechSynthesis.getVoices();
   page.addEventListener('load', function() {
     
-  const changeVoice = document.getElementById("voice-select");
-  var option;
-  for (let i = 0; i < listVoice.length; i++) { 
-    option = document.createElement("option");
-    option.text = listVoice[i].name;
-    changeVoice.add(option);
-  }
+    const changeVoice = document.getElementById("voice-select");
+    var option;
+    for (let i = 0; i < listVoice.length; i++) { 
+      option = document.createElement("option");
+      option.textContent = `${listVoice[i].name} (${listVoice[i].lang})`;
+      changeVoice.appendChild(option);
+    }
 });
 
 const button = document.querySelector("button");

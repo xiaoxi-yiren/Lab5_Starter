@@ -12,7 +12,7 @@ function init() {
     soundFile.src = "assets/audio/" + event.target.value + ".mp3";
 });
 
-const changeVolume = document.getElementById("volume-controls");
+const changeVolume = document.getElementById("volume");
 
 changeVolume.addEventListener('input', (event) => {
   const result = document.querySelectorAll("img")[1];
@@ -29,8 +29,8 @@ changeVolume.addEventListener('input', (event) => {
 });
 
 const button = document.querySelector("button");
-const canvas = document.document.querySelector("img");
-const jsConfetti = new JSConfetti({ canvas })
+
+const jsConfetti = new JSConfetti()
 
 button.addEventListener('click', function() {
   if (changeImage.value == "party-horn") {
