@@ -5,11 +5,11 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
   const changeImage = document.getElementById("horn-select");
   const soundFile = document.querySelector(".hidden");
-  changeImage.addEventListener('change', function() {
+  changeImage.addEventListener('change', (event) => {
     const result = document.querySelector("img");
-    result.src = "assets/images/" + changeImage.value + ".svg";
+    result.src = "assets/images/" + event.target.value + ".svg";
     
-    soundFile.src = "assets/audio" + changeImage.value + ".mp3";
+    soundFile.src = "assets/audio/" + event.target.value + ".mp3";
 });
 
 const changeVolume = document.getElementById("volume-controls");
