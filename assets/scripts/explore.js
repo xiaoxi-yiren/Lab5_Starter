@@ -5,8 +5,9 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
 
   const page = document.querySelector("html");
+  const listVoice = SpeechSynthesis.getVoices();
   page.addEventListener('load', function() {
-    const listVoice = SpeechSynthesis.getVoices();
+    
   const changeVoice = document.getElementById("voice-select");
   var option;
   for (let i = 0; i < listVoice.length; i++) { 
@@ -19,11 +20,13 @@ function init() {
 const button = document.querySelector("button");
 
 button.addEventListener('click', function() {
-  if (changeImage.value == "party-horn") {
-    const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti();
+  const synth = window.speechSynthesis;
+  const textArea = document.getElementById("text-to-speak");
+  const utterThis = new SpeechSynthesisUtterance(textArea.value);
+  for (let j = 0; j < listVoice.length; j++) {
+    if (listVoice[j].name == changeVoice.value)
+      utterThis.voice = listVoice[j];
   }
-
-  soundFile.play();
+  synth.speak(utterThis);
 });
 }
