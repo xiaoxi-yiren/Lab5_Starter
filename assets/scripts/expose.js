@@ -14,7 +14,7 @@ function init() {
 
 const changeVolume = document.getElementById("volume-controls");
 
-changeVolume.addEventListener('change', (event) => {
+changeVolume.addEventListener('input', (event) => {
   const result = document.querySelectorAll("img")[1];
   const val = parseInt(changeVolume.value, 10);
   if (val == 0)
@@ -29,10 +29,12 @@ changeVolume.addEventListener('change', (event) => {
 });
 
 const button = document.querySelector("button");
+const canvas = document.document.querySelector("img");
+const jsConfetti = new JSConfetti({ canvas })
 
 button.addEventListener('click', function() {
   if (changeImage.value == "party-horn") {
-    const jsConfetti = new JSConfetti();
+    
     jsConfetti.addConfetti();
   }
 
